@@ -1,0 +1,25 @@
+{% extends 'rickandmortys/baseRickAndMorty.html.twig' %}
+
+{% block contenido %}
+      <div class="container">
+        <div class="row">
+          <div class="col text-center">
+            <h2>{{rickandmorty.nombre}} Nº {{rickandmorty.codigo}}</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col"><img src="{{rickandmorty.imagen}}" /></div>
+          <div class="col">
+            <div class="row"><div class="col">{{rickandmorty.descripcion}}</div></div>
+            <div class="row">
+              <ul>
+                {%  for status in rickandmorty.statues %}
+                <li>{{ status.nombre }}</li>
+               {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endblock %}
+   

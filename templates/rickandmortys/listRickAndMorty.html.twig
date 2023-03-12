@@ -1,0 +1,26 @@
+{% extends 'rickandmortys/baseRickAndMorty.html.twig' %}
+{% block contenido %}
+
+{%  for mensaje in app.flashes('success') %}
+<p>{{ mensaje }}</p>
+{% endfor %}
+<h2>Listado Rick and Morty</h2>
+<div class="row row-cols-1 row-cols-md-2">
+  {% for rickandmorty in rickandmortys %}
+  <div class="col mb-4">
+    <div class="card" style="width: 18rem">
+      <img src="{{ rickandmorty.imagen }}" class="card-img-top" />
+      <div class="card-body">
+        <h5 class="card-title">{{rickandmorty.nombre}}</h5>
+        <p class="card-text">{{rickandmorty.descripcion}}</p>
+        <a href="{{ path ('showRickAndMorty', {id:rickandmorty.id}) }}" class="btn btn-primary">Más Info</a>
+        <a href="{{ path ('editRickAndMorty', {id:rickandmorty.id}) }}" class="btn btn-primary">Editar</a>
+        <a href="{{ path ('deleteRickAndMorty', {id:rickandmorty.id}) }}" class="btn btn-primary">Borrar</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
+
